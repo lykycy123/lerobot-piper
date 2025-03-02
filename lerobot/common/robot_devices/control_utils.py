@@ -43,7 +43,7 @@ def log_control_info(robot: Robot, dt_s, episode_index=None, frame_index=None, f
     log_dt("dt", dt_s)
 
     # TODO(aliberts): move robot-specific logs logic in robot.print_logs()
-    if not robot.robot_type.startswith("stretch"):
+    if not robot.robot_type.startswith(("stretch", "piper")):
         for name in robot.leader_arms:
             key = f"read_leader_{name}_pos_dt_s"
             if key in robot.logs:
@@ -301,7 +301,7 @@ def stop_recording(robot, listener, display_cameras):
 
 
 def sanity_check_dataset_name(repo_id, policy_cfg):
-    _, dataset_name = repo_id.split("/")
+    dataset_name = repo_id.split("/")[-1]
     # either repo_id doesnt start with "eval_" and there is no policy
     # or repo_id starts with "eval_" and there is a policy
 

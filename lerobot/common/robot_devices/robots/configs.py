@@ -13,6 +13,7 @@ from lerobot.common.robot_devices.motors.configs import (
     DynamixelMotorsBusConfig,
     FeetechMotorsBusConfig,
     MotorsBusConfig,
+    PiperMotorsBusConfig
 )
 
 
@@ -597,3 +598,44 @@ class LeKiwiRobotConfig(RobotConfig):
     )
 
     mock: bool = False
+
+
+@RobotConfig.register_subclass("piper")
+@dataclass
+class PiperRobotConfig(RobotConfig):
+    inference_time: bool
+    
+    follower_arm: dict[str, MotorsBusConfig] = field(
+        default_factory=lambda: {
+            "main": PiperMotorsBusConfig(
+                can_name="can0",
+                motors={
+                    # name: (index, model)
+                    "joint_1": [1, "agilex_piper"],
+                    "joint_2": [2, "agilex_piper"],
+                    "joint_3": [3, "agilex_piper"],
+                    "joint_4": [4, "agilex_piper"],
+                    "joint_5": [5, "agilex_piper"],
+                    "joint_6": [6, "agilex_piper"],
+                    "gripper": (7, "agilex_piper"),
+                },
+            ),
+        }
+    )
+
+    cameras: dict[str, CameraConfig] = field(
+        default_factory=lambda: {
+            "one": OpenCVCameraConfig(
+                camera_index=0,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "two": OpenCVCameraConfig(
+                camera_index=2,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+        }
+    )
