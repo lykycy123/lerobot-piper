@@ -108,7 +108,7 @@ python lerobot/scripts/train.py \
 
 
 # Inference
-还是使用control_robot.py中的record loop吗，使用 **--robot.inference_time=true** 可以将手柄移出。
+还是使用control_robot.py中的record loop，配置 **--robot.inference_time=true** 可以将手柄移出。
 ```bash
 python lerobot/scripts/control_robot.py \
     --robot.type=piper \
