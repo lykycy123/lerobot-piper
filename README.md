@@ -1,3 +1,7 @@
+# 项目硬件
+使用PIPER松灵机械臂  
+使用realsense摄像头，可以自定义个数  
+使用手柄控制
 # Install
 Create a virtual environment with Python 3.10 and activate it, e.g. with [`miniconda`](https://docs.anaconda.com/free/miniconda/index.html):
 ```bash
@@ -30,7 +34,19 @@ pip install pygame
 ```
 
 # piper集成lerobot
-见lerobot_piper_tutorial/1. 🤗 LeRobot：新增机械臂的一般流程.pdf
+见lerobot_piper_tutorial/1. 🤗 LeRobot：新增机械臂的一般流程.pdf  
+注意在使用的时候可能会出现ImportError: /lib/x86_64-linux-gnu/libstdc++.so.6: version `GLIBCXX_3.4.29' not found (required by /home/lyk/.conda/envs/lerobot/lib/python3.10/site-packages/cv2.cpython-310-x86_64-linux-gnu.so)的问题
+```bash
+conda install -c conda-forge libstdcxx-ng  # 安装或更新  
+
+# 激活 Conda 环境后，设置 LD_LIBRARY_PATH  
+conda activate lerobot  
+export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH  
+
+# 验证是否生效  
+echo $LD_LIBRARY_PATH  # 应包含 Conda 环境的 lib 目录
+
+```
 
 # Teleoperate
 ```bash

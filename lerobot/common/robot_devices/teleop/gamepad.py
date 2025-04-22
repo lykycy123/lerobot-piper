@@ -26,7 +26,7 @@ class SixAxisArmController:
         # 定义关节弧度限制（计算好的范围）
         self.joint_limits = [
             (-92000 / 57324.840764, 92000 / 57324.840764),  # joint1
-            (-1300 / 57324.840764, 90000 / 57324.840764),   # joint2
+            (-1300 / 57324.840764, 190000 / 57324.840764),   # joint2
             (-80000 / 57324.840764, 0 / 57324.840764),   # joint3
             (-90000 / 57324.840764, 90000 / 57324.840764),  # joint4
             (-77000 / 57324.840764, 19000 / 57324.840764),  # joint5
@@ -56,7 +56,7 @@ class SixAxisArmController:
             if abs(left_y) < 0.5:
                 left_y = 0.0
 
-            right_x = -self.joystick.get_axis(3)  # 右摇杆x轴（取反，因为y轴向下为正）
+            right_x = -self.joystick.get_axis(2)  # 右摇杆x轴（取反，因为y轴向下为正）
             if abs(right_x) < 0.5:
                 right_x = 0.0
             
@@ -70,8 +70,27 @@ class SixAxisArmController:
             # 获取按钮输入
             circle = self.joystick.get_button(1)  # 圈按钮
             cross = self.joystick.get_button(0)  # 叉按钮
-            triangle = self.joystick.get_button(2)
+            triangle = self.joystick.get_button(4)
             square = self.joystick.get_button(3)
+
+            # #debug
+            # if left:
+            #     print("Left pressed")
+            # if right:
+            #     print("Right pressed")
+            # if up:
+            #     print("Up pressed")
+            # if down:
+            #     print("Down pressed")
+            # if square: 
+            #     print("Square button pressed")
+            # if triangle:
+            #     print("Triangle button pressed")
+            # if cross:
+            #     print("Cross button pressed")
+            # if circle:
+            #     print("Circle button pressed")
+
             
             # 映射输入到速度
             self.speeds[0] = left_x * 0.01  # joint1速度

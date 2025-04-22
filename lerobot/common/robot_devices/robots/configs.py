@@ -625,17 +625,24 @@ class PiperRobotConfig(RobotConfig):
 
     cameras: dict[str, CameraConfig] = field(
         default_factory=lambda: {
-            "one": OpenCVCameraConfig(
-                camera_index=0,
+            # "one": OpenCVCameraConfig(
+            #     camera_index=0,
+            #     fps=30,
+            #     width=640,
+            #     height=480,
+            # ),
+            # "two": OpenCVCameraConfig(
+            #     camera_index=2,
+            #     fps=30,
+            #     width=640,
+            #     height=480,
+            # ),
+            "one": IntelRealSenseCameraConfig(
+                name="Intel RealSense D435I",
                 fps=30,
                 width=640,
                 height=480,
-            ),
-            "two": OpenCVCameraConfig(
-                camera_index=2,
-                fps=30,
-                width=640,
-                height=480,
+                rotation=None,
             ),
         }
     )
