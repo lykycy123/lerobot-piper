@@ -69,7 +69,7 @@ python lerobot/scripts/control_robot.py replay \
 python lerobot/scripts/control_robot.py record \
     --robot.type=so100 \
     --control.type=record \
-    --control.fps 30 \
+    --control.fps=30 \
     --control.repo_id=$USER/koch_pick_place_lego \
     --control.num_episodes=50 \
     --control.warmup_time_s=2 \

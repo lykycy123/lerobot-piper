@@ -232,6 +232,5 @@ class PiperRobot:
         if self.is_connected:
             self.disconnect()
             if not self.inference_time:
-                self.teleop.reset()
                 self.teleop.stop()
                 
