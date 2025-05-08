@@ -42,6 +42,9 @@ conda install -c conda-forge libstdcxx-ng  # 安装或更新
 # 激活 Conda 环境后，设置 LD_LIBRARY_PATH  
 conda activate lerobot  
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH  
+# 激活can
+cd piper_scripts/
+bash can_activate.sh can0 1000000
 
 # 验证是否生效  
 echo $LD_LIBRARY_PATH  # 应包含 Conda 环境的 lib 目录
@@ -50,10 +53,6 @@ echo $LD_LIBRARY_PATH  # 应包含 Conda 环境的 lib 目录
 
 # Teleoperate
 ```bash
-cd piper_scripts/
-bash can_activate.sh can0 1000000
-
-cd ..
 python lerobot/scripts/control_robot.py \
     --robot.type=piper \
     --robot.inference_time=false \
@@ -124,6 +123,9 @@ python lerobot/scripts/train.py \
 
 
 # Inference
+
+注意，如果直接使用可能会出现缺少type字段的问题，在训练好的模型中，修改pretrained_model中config.json文件，在开头加上"type" : "act",
+
 还是使用control_robot.py中的record loop，配置 **--robot.inference_time=true** 可以将手柄移出。
 ```bash
 python lerobot/scripts/control_robot.py \
