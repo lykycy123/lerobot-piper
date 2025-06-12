@@ -126,6 +126,8 @@ python lerobot/scripts/train.py \
 
 注意，如果直接使用可能会出现缺少type字段的问题，在训练好的模型中，修改pretrained_model中config.json文件，在开头加上"type" : "act",
 
+HF_USER=$PWD/inference_real
+
 还是使用control_robot.py中的record loop，配置 **--robot.inference_time=true** 可以将手柄移出。
 ```bash
 python lerobot/scripts/control_robot.py \
