@@ -144,7 +144,7 @@ def train(cfg: TrainPipelineConfig):
 
     logging.info("Creating optimizer and scheduler")
     optimizer, lr_scheduler = make_optimizer_and_scheduler(cfg, policy)
-    grad_scaler = GradScaler(device, enabled=cfg.use_amp)
+    grad_scaler = GradScaler(device, enabled=cfg.policy.use_amp)
 
     step = 0  # number of policy updates (forward + backward + optim)
 
@@ -218,7 +218,7 @@ def train(cfg: TrainPipelineConfig):
             cfg.optimizer.grad_clip_norm,
             grad_scaler=grad_scaler,
             lr_scheduler=lr_scheduler,
-            use_amp=cfg.use_amp,
+            use_amp=cfg.policy.use_amp,
         )
 
         # Note: eval and checkpoint happens *after* the `step`th training update has completed, so we
@@ -249,7 +249,7 @@ def train(cfg: TrainPipelineConfig):
         if cfg.env and is_eval_step:
             step_id = get_step_identifier(step, cfg.steps)
             logging.info(f"Eval policy at step {step}")
-            with torch.no_grad(), torch.autocast(device_type=device.type) if cfg.use_amp else nullcontext():
+            with torch.no_grad(), torch.autocast(device_type=device.type) if cfg.policy.use_amp else nullcontext():
                 eval_info = eval_policy(
                     eval_env,
                     policy,
