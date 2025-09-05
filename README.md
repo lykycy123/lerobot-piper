@@ -2,6 +2,8 @@
 
 https://github.com/user-attachments/assets/79fe22a5-0589-43c9-9faa-3b553aafdcb0
 
+if the video is empty, see this link: https://github.com/lykycy123/lerobot-piper/blob/main/W3_manipulator.mp4
+
 # 项目硬件
 使用PIPER松灵机械臂  
 使用realsense摄像头，可以自定义个数  
