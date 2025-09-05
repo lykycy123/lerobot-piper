@@ -65,7 +65,8 @@ python lerobot/scripts/control_robot.py \
     --control.type=teleoperate
 ```
 
-# Record
+# Record 
+**注意所有的single_task名字不能重复，num_episodes是一个任务记录多少条数据，episode_time是一条数据的记录时间** \
 Set dataset root path
 ```bash
 HF_USER=$PWD/data
@@ -154,7 +155,7 @@ python lerobot/scripts/control_robot.py \
     --control.policy.path=outputs/train/act_koch_pick_place_lego/checkpoints/latest/pretrained_model
 ```
 
-上述方法需要注意每次使用的命令行控制中control.single_task这部分名字不能重复，不方便经常使用，所以下述方法使用python代码控制,也方便集成和二次开发
+**上述方法需要注意每次使用的命令行控制中control.single_task这部分名字不能重复，不方便经常使用，所以下述方法使用python代码控制,也方便集成和二次开发**
 ```bash
 python lerobot/scripts/control_robot.py 
 ```
