@@ -132,10 +132,10 @@ python lerobot/scripts/train.py \
   --wandb.enable=true
 ``` 
 
-**注意在推理前需要包含训练好的模型**
+
 # Inference
 
-注意，如果直接使用可能会出现缺少type字段的问题，在训练好的模型中，修改pretrained_model中config.json文件，在开头加上"type" : "act",
+**注意在推理前需要包含训练好的模型**，注意，如果直接使用可能会出现缺少type字段的问题，在训练好的模型中，修改pretrained_model中config.json文件，在开头加上"type" : "act",
 
 2025/6/13更新：新训练的模型，checkpoints配置文件中可能需要删除use_amp和device，如果报错raise ParsingError(f"Couldn't instantiate class {stringify_type(cls)} using the given arguments.") from e
 draccus.utils.ParsingError: Couldn't instantiate class RecordControlConfig using the given arguments，则加上--control.device=cuda
