@@ -65,6 +65,8 @@ python lerobot/scripts/control_robot.py \
     --control.type=teleoperate
 ```
 
+**注意在使用前需要包含训练好的模型**
+
 # Record 
 **注意所有的single_task名字不能重复，num_episodes是一个任务记录多少条数据，episode_time是一条数据的记录时间** \
 Set dataset root path
