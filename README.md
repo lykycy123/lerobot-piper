@@ -57,6 +57,8 @@ echo $LD_LIBRARY_PATH  # 应包含 Conda 环境的 lib 目录
 
 ```
 
+**注意在使用前需要包含训练好的模型**
+
 # Teleoperate
 ```bash
 python lerobot/scripts/control_robot.py \
@@ -65,7 +67,7 @@ python lerobot/scripts/control_robot.py \
     --control.type=teleoperate
 ```
 
-**注意在使用前需要包含训练好的模型**
+
 
 # Record 
 **注意所有的single_task名字不能重复，num_episodes是一个任务记录多少条数据，episode_time是一条数据的记录时间** \
